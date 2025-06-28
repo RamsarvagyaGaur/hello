@@ -26,11 +26,12 @@ jobs:
 
       - name: Set Git identity
         run: |
-          git config user.name "Ramsarvagya Gaur"
-          git config user.email "ramsarvagya@example.com"
+          git config user.name "RamsarvagyaGaur"
+          git config user.email "sarvagyagaur493@gmail.com"
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
         env:
-          CI: false
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx gh-pages -d build -u "RamsarvagyaGaur <sarvagyagaur493@gmail.com>" \
+            -r https://x-access-token:${GH_TOKEN}@github.com/RamsarvagyaGaur/hello.git
