@@ -1,0 +1,39 @@
+name: Deploy React App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+      
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app
+        run: npm run build
+
+      - name: Set Git identity
+        run: |
+          git config user.name "RamsarvagyaGaur"
+          git config user.email "sarvagyagaur493@gmail.com"
+
+      - name: Deploy to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx gh-pages -d build \
+            -u "RamsarvagyaGaur <sarvagyagaur493@gmail.com>" \
+            -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/RamsarvagyaGaur/hello.git
