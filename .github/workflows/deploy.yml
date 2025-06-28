@@ -33,5 +33,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx gh-pages -d build -u "RamsarvagyaGaur <sarvagyagaur493@gmail.com>" \
-            -r https://x-access-token:${GH_TOKEN}@github.com/RamsarvagyaGaur/hello.git
+          npx gh-pages -d build \
+            -u "RamsarvagyaGaur <sarvagyagaur493@gmail.com>" \
+            -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/RamsarvagyaGaur/hello.git
